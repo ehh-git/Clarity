@@ -6,3 +6,4 @@ Has the ability for patients to set reminders for when to take their medications
 Patients can log in a timeline any side effects they might feel or any worsening/bettering of their conditions that the doctor can see upon their next checkup
 Patient is able to better understand what and why they are being prescribed
 HELPS MINIMIZE DIAGNOSTIC ISSUES, AS MEDICATION RELATED HARM CONSTITUTES ROUGHLY 44% OF HARM TO PATIENTS
+penis
