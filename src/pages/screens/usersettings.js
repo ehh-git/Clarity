@@ -15,6 +15,7 @@ export default function Providers() {
         minHeight: "100vh",
         minWidth: "100vw",
         background: colorBgContainer,
+        backgroundColor: "#DBAFC1",
       }}
     >
       <p1 style={{ color: "black" }}>Providers page</p1>
