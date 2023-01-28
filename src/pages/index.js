@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Layout, Menu, theme } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
-import { UserOutlined, CalendarOutlined } from "@ant-design/icons";
+import { UserOutlined, CalendarOutlined, SettingOutlined } from "@ant-design/icons";
 import Providers from "./screens/providers";
+import Timeline from "./screens/timeline";
+import Usersettings from "./screens/usersettings";
 
 export default function Home() {
   const {
@@ -16,7 +18,10 @@ export default function Home() {
       page = <Providers />;
       break;
     case "2":
-      page = <h1>bruh</h1>;
+      page = <Timeline />;
+      break;
+    case "3":
+      page = <Usersettings />;
       break;
     default:
       page = <Providers />;
@@ -49,12 +54,17 @@ export default function Home() {
               key: "1",
               icon: <UserOutlined />,
               label: "My Providers",
-            },
+            }, 
             {
               key: "2",
               icon: <CalendarOutlined />,
-              label: "Calendar",
+              label: "Timeline",
             },
+            {
+              key: "3",
+              icon: <SettingOutlined />,
+              label: "User Settings",
+            }
           ]}
           onClick={(e) => {
             setCurrPage(e.key);
