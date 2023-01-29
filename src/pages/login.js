@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Input, Layout, Card, theme, Image } from "antd";
-const handleClick = event => {
-  window.location.href = '/rolechoice';
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  Layout,
+  Card,
+  theme,
+  Image,
+} from "antd";
+const handleClick = (event) => {
+  window.location.href = "/rolechoice";
 };
 const { Content } = Layout;
-
 
 export default function Login() {
   const {
@@ -22,8 +30,15 @@ export default function Login() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
       }}
     >
+      <Image
+        width={200}
+        src="https://i.imgur.com/4ZQZQ2m.png"
+        preview={false}
+        style={{ marginBottom: "5%" }}
+      />
       <Card
         title="Login"
         style={{
@@ -31,7 +46,7 @@ export default function Login() {
         }}
       >
         <Form
-          name="basic" 
+          name="basic"
           labelCol={{ span: 6 }}
           wrapperCol={{ span: 16 }}
           style={{ maxWidth: 600 }}

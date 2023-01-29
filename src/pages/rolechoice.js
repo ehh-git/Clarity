@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Button, Checkbox, Form, Input, Layout, Card, theme } from "antd";
 // for patient page
-const handleClick = event => {
-  window.location.href = '/home';
+const handleClick = (event) => {
+  window.location.href = "/home";
 };
 // for doctor page
-const handleClick2 = event => {
-  window.location.href = '/doctor';
+const handleClick2 = (event) => {
+  window.location.href = "/doctor";
 };
 const { Content } = Layout;
 export default function roleChoice() {
@@ -37,18 +37,24 @@ export default function roleChoice() {
           name="basic"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
           initialValues={{ remember: true }}
           /* onFinish={onFinish}
       onFinishFailed={onFinishFailed} */
           autoComplete="off"
+          style={{
+            maxWidth: 600,
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
-          <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
+          <Form.Item>
             <Button type="primary" htmlType="submit" onClick={handleClick}>
               Patient
             </Button>
           </Form.Item>
-          <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
+          <Form.Item>
             <Button type="primary" htmlType="submit" onClick={handleClick2}>
               Provider
             </Button>

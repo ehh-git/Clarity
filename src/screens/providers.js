@@ -8,6 +8,10 @@ import {
   Form,
   Modal,
   Input,
+  Row,
+  ConfigProvider,
+  Radio,
+  Checkbox,
   theme,
 } from "antd";
 const { Content } = Layout;
@@ -39,14 +43,23 @@ export default function Providers() {
 
   const handleOk = () => {
     let n = input === "123" ? "Vin Diesel" : "Dwayne the Rock Johnson";
-    let image = input === "123" ? "https://cdn.cnn.com/cnnnext/dam/assets/200927125801-vin-diesel-file-super-tease.jpg" : "https://i.kym-cdn.com/entries/icons/facebook/000/038/638/the_wock.jpg";
-    let desc = input === "123" ? "Cardiovascular Surgeon" : "General Practitioner";
+    let image =
+      input === "123"
+        ? "https://cdn.cnn.com/cnnnext/dam/assets/200927125801-vin-diesel-file-super-tease.jpg"
+        : "https://i.kym-cdn.com/entries/icons/facebook/000/038/638/the_wock.jpg";
+    let desc =
+      input === "123" ? "Cardiovascular Surgeon" : "General Practitioner";
     fetch("/api/addProvider", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ providerId: input, name: n, img: image, description: desc}),
+      body: JSON.stringify({
+        providerId: input,
+        name: n,
+        img: image,
+        description: desc,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -92,19 +105,19 @@ export default function Providers() {
             />
           </Tooltip>
         </div>
-        <List
-          grid={{ gutter: 16, column: 4 }}
-          dataSource={data}
-          renderItem={(item) => (
-            <List.Item>
-              <ProviderCard
-                name={item.name}
-                img={item.img}
-                description={item.description}
-              />
-            </List.Item>
-          )}
-        />
+        <div>
+          <Row>
+            {data.map((item) => (
+              <List.Item style={{ padding: "1%" }}>
+                <ProviderCard
+                  name={item.name}
+                  img={item.img}
+                  description={item.description}
+                />
+              </List.Item>
+            ))}
+          </Row>
+        </div>
       </div>
       <Modal
         title="Add Provider"
