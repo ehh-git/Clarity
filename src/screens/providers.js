@@ -42,13 +42,25 @@ export default function Providers() {
   };
 
   const handleOk = () => {
-    let n = input === "123" ? "Vin Diesel" : "Dwayne the Rock Johnson";
-    let image =
-      input === "123"
-        ? "https://cdn.cnn.com/cnnnext/dam/assets/200927125801-vin-diesel-file-super-tease.jpg"
-        : "https://i.kym-cdn.com/entries/icons/facebook/000/038/638/the_wock.jpg";
-    let desc =
-      input === "123" ? "Cardiovascular Surgeon" : "General Practitioner";
+    let n = "";
+    let image = "";
+    let desc = "";
+    if (input === "123") {
+      n = "Vin Diesel";
+      image =
+        "https://cdn.cnn.com/cnnnext/dam/assets/200927125801-vin-diesel-file-super-tease.jpg";
+      desc = "Cardiovascular Surgeon";
+    }
+    else if (input === "321") {
+      n = "Dwayne the Rock Johnson";
+      image = "https://i.kym-cdn.com/entries/icons/facebook/000/038/638/the_wock.jpg";
+      desc = "General Practitioner";
+    }
+    else {
+      n = "John Cina";
+      image = "https://ntvb.tmsimg.com/assets/assets/487578_v9_bb.jpg?w=270&h=360";
+      desc = "Pediatrician";
+    }
     fetch("/api/addProvider", {
       method: "POST",
       headers: {
