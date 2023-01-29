@@ -153,12 +153,17 @@ export default function Appointments() {
           >
             <Select style={{ width: 120 }}>
               <Option value="Barack Obama">Barack Obama</Option>
+              <Option value="Taylor Swift">Taylor Swift</Option>
+              <Option value="Sponge Bob">Sponge Bob</Option>
             </Select>
           </Form.Item>
           <Form.Item label="Prescriptions" name="prescriptions">
             <Select mode="multiple" style={{ width: 120 }}>
               <Option value="Tylenol">Tylenol</Option>
               <Option value="Advil">Advil</Option>
+              <Option value="Adderall">Adderall</Option>
+              <Option value="Zoloft">Zoloft</Option>
+              <Option value="Prozac">Prozac</Option>
             </Select>
           </Form.Item>
         </Form>
