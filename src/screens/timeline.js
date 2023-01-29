@@ -196,9 +196,9 @@ export default function TimelinePage() {
               renderItem={(item) => (
                 <List.Item>
                   <Card title={item.name}>
+                  <p>{item.description}</p>
                     <p>{item.dosage}</p>
                     <p>{item.frequency}</p>
-                    <p>{item.description}</p>
                   </Card>
                 </List.Item>
               )}

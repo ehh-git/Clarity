@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Button, Checkbox, Form, Input, Layout, Card, theme } from "antd";
+const handleClick = event => {
+  window.location.href = '/home';
+};
 const { Content } = Layout;
 export default function Login() {
   const {
@@ -60,7 +63,7 @@ export default function Login() {
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={handleClick}>
               Submit
             </Button>
           </Form.Item>
