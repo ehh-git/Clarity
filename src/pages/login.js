@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Input, Layout, Card, theme } from "antd";
+import { Button, Checkbox, Form, Input, Layout, Card, theme, Image } from "antd";
 const handleClick = event => {
-  window.location.href = '/home';
+  window.location.href = '/rolechoice';
 };
 const { Content } = Layout;
+
+
 export default function Login() {
   const {
     token: { colorBgContainer },
@@ -16,7 +18,7 @@ export default function Login() {
         height: "100vh",
         minHeight: "100vh",
         minWidth: "100vw",
-        background: colorBgContainer,
+        background: "#E7C8DD",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -29,8 +31,8 @@ export default function Login() {
         }}
       >
         <Form
-          name="basic"
-          labelCol={{ span: 8 }}
+          name="basic" 
+          labelCol={{ span: 6 }}
           wrapperCol={{ span: 16 }}
           style={{ maxWidth: 600 }}
           initialValues={{ remember: true }}
