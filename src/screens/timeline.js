@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Timeline, Typography, Card, Button, List, theme } from "antd";
+import {
+  Layout,
+  Timeline,
+  Typography,
+  Card,
+  Button,
+  List,
+  Form,
+  Modal,
+  Select,
+  Input,
+  Tooltip,
+  theme,
+} from "antd";
 
 const { Title, Text } = Typography;
 const { Header, Content, Footer, Sider } = Layout;
-import { UserOutlined, CalendarOutlined } from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
 
 export default function TimelinePage() {
   const {
@@ -20,6 +33,33 @@ export default function TimelinePage() {
         setTimelineEvents(data);
       });
   }, []);
+
+  const [form] = Form.useForm();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    fetch("/api/addEvent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form.getFieldsValue()),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTimelineEvents(data);
+      });
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const timelineItems = timelineEvents.map((event) => {
     let color = "";
@@ -103,7 +143,25 @@ export default function TimelinePage() {
           paddingTop: "3%",
         }}
       >
-        <Title>Timeline</Title>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Title>Timeline</Title>
+          <Tooltip title="Add Event">
+            <Button
+              style={{ marginLeft: "1%", marginBottom: "1%" }}
+              type="primary"
+              shape="circle"
+              icon={<PlusOutlined />}
+              onClick={showModal}
+            />
+          </Tooltip>
+        </div>
         <Timeline>{timelineItems}</Timeline>
       </Content>
       <Content
@@ -150,6 +208,42 @@ export default function TimelinePage() {
           <h2 style={{ color: "black" }}>Select an appointment on the left</h2>
         )}
       </Content>
+      <Modal
+        title="Add Event"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          /* onFinish={onFinish}
+      onFinishFailed={onFinishFailed} */
+          autoComplete="off"
+          form={form}
+        >
+          <Form.Item
+            label="Type"
+            name="type"
+            rules={[{ required: true, message: "Please select type!" }]}
+          >
+            <Select style={{ width: 120 }}>
+              <Option value="symptom">Symptom</Option>
+              <Option value="medication">Medication</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label="Title"
+            name="title"
+            rules={[{ required: true, message: "Please input title!" }]}
+          >
+            <Input />
+          </Form.Item>
+        </Form>
+      </Modal>
     </Content>
   );
 }
