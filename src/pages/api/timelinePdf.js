@@ -2,6 +2,11 @@
 import clientPromise from "@/lib/mongodb";
 import PDFDocument from "pdfkit-table";
 
+const capitalize = (s) => {
+  if (typeof s !== "string") return "";
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
 export default async function handler(req, res) {
   const doc = new PDFDocument({ margin: 30, size: "A4" });
   const client = await clientPromise;
@@ -30,7 +35,11 @@ export default async function handler(req, res) {
   const table = {
     title: "Events",
     headers: ["Event", "Date", "Provider"],
-    rows: events.map((event) => [event.type, event.title, event.date]),
+    rows: events.map((event) => [
+      capitalize(event.type),
+      event.title,
+      event.date,
+    ]),
   };
 
   doc.table(table, {});
