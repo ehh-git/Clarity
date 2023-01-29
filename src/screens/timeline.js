@@ -156,7 +156,7 @@ export default function TimelinePage() {
           <Title>Timeline</Title>
           <Tooltip title="Add Event">
             <Button
-              style={{ marginLeft: "1%", marginBottom: "1%" }}
+              style={{ marginLeft: "3%", marginBottom: "3%" }}
               type="primary"
               shape="circle"
               icon={<PlusOutlined />}
@@ -165,7 +165,7 @@ export default function TimelinePage() {
           </Tooltip>
           <Tooltip title="Export Timeline PDF">
             <Button
-              style={{ marginLeft: "1%", marginBottom: "1%" }}
+              style={{ marginLeft: "1%", marginBottom: "3%" }}
               type="primary"
               shape="circle"
               icon={<ExportOutlined />}
