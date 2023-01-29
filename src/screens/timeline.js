@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Layout, Timeline, Typography, Card, Button, List, theme } from "antd";
 
 const { Title, Text } = Typography;
@@ -10,28 +10,15 @@ export default function TimelinePage() {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const timelineEvents = [
-    {
-      id: "1",
-      type: "appointment",
-      title: "General Checkup",
-      date: "2021-01-01",
-      provider: "Dr. Smith",
-      providerId: "123",
-    },
-    {
-      id: "2",
-      type: "symptom",
-      title: "Headache",
-      date: "2021-01-01",
-    },
-    {
-      id: "3",
-      type: "medication",
-      title: "Tylenol",
-      date: "2021-01-01",
-    },
-  ];
+  const [timelineEvents, setTimelineEvents] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/events")
+      .then((res) => res.json())
+      .then((data) => {
+        setTimelineEvents(data);
+      });
+  }, []);
 
   const appointmentData = {
     id: "1",
@@ -40,7 +27,7 @@ export default function TimelinePage() {
     provider: "Dr. Smith",
     providerId: "123",
     notes: "This is a note",
-    prescriptions: [
+    prescriptions: [  
       {
         id: "1",
         name: "Tylenol",
