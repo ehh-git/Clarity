@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Layout,
   Typography,
@@ -19,18 +19,15 @@ export default function Providers() {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const mockData = [
-    {
-      name: "John Doe",
-      img: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-      description: "Cardiovascular Surgeon",
-    },
-    {
-      name: "Jane Doe",
-      img: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-      description: "General Practitioner",
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/providers")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -80,7 +77,7 @@ export default function Providers() {
         </div>
         <List
           grid={{ gutter: 16, column: 4 }}
-          dataSource={mockData}
+          dataSource={data}
           renderItem={(item) => (
             <List.Item>
               <ProviderCard
