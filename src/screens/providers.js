@@ -50,15 +50,15 @@ export default function Providers() {
       image =
         "https://cdn.cnn.com/cnnnext/dam/assets/200927125801-vin-diesel-file-super-tease.jpg";
       desc = "Cardiovascular Surgeon";
-    }
-    else if (input === "321") {
+    } else if (input === "321") {
       n = "Dwayne the Rock Johnson";
-      image = "https://i.kym-cdn.com/entries/icons/facebook/000/038/638/the_wock.jpg";
+      image =
+        "https://i.kym-cdn.com/entries/icons/facebook/000/038/638/the_wock.jpg";
       desc = "General Practitioner";
-    }
-    else {
+    } else {
       n = "John Cina";
-      image = "https://ntvb.tmsimg.com/assets/assets/487578_v9_bb.jpg?w=270&h=360";
+      image =
+        "https://ntvb.tmsimg.com/assets/assets/487578_v9_bb.jpg?w=270&h=360";
       desc = "Pediatrician";
     }
     fetch("/api/addProvider", {
@@ -124,13 +124,13 @@ export default function Providers() {
           }}
         >
           {data.map((item) => (
-            <List.Item style={{ padding: "1%" }}>
+            <div style={{ padding: "1%" }}>
               <ProviderCard
                 name={item.name}
                 img={item.img}
                 description={item.description}
               />
-            </List.Item>
+            </div>
           ))}
         </Row>
       </div>
