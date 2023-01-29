@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Layout, Typography, Table, Tag, Space, theme } from "antd";
 
 const { Title, Text } = Typography;
@@ -49,22 +49,15 @@ export default function MedicationsPage() {
     },
   ];
 
-  const data = [
-    {
-      key: "1",
-      medication: "Tylenol",
-      dosage: "1 pill",
-      frequency: "2x a day",
-      sideEffects: ["headache", "nausea"],
-    },
-    {
-      key: "2",
-      medication: "Advil",
-      dosage: "1 pill",
-      frequency: "2x a day",
-      sideEffects: ["headache", "nausea"],
-    },
-  ];
+  const [medications, setMedications] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/medications")
+      .then((res) => res.json())
+      .then((data) => {
+        setMedications(data);
+      });
+  }, []);
 
   return (
     <Content
@@ -79,7 +72,7 @@ export default function MedicationsPage() {
       }}
     >
       <Title>Medications</Title>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={medications} />
     </Content>
   );
 }
