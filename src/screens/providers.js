@@ -5,6 +5,7 @@ import {
   List,
   Tooltip,
   Button,
+  Form,
   Modal,
   Input,
   theme,
@@ -37,12 +38,15 @@ export default function Providers() {
   };
 
   const handleOk = () => {
+    let n = input === "123" ? "Vin Diesel" : "Dwayne the Rock Johnson";
+    let image = input === "123" ? "https://cdn.cnn.com/cnnnext/dam/assets/200927125801-vin-diesel-file-super-tease.jpg" : "https://i.kym-cdn.com/entries/icons/facebook/000/038/638/the_wock.jpg";
+    let desc = input === "123" ? "Cardiovascular Surgeon" : "General Practitioner";
     fetch("/api/addProvider", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ input }),
+      body: JSON.stringify({ providerId: input, name: n, img: image, description: desc}),
     })
       .then((res) => res.json())
       .then((data) => {

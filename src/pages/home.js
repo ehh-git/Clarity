@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu, theme } from "antd";
+import { ConfigProvider, Layout, Menu, theme } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 import {
   UserOutlined,

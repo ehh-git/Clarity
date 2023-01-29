@@ -151,7 +151,7 @@ export default function Appointments() {
             rules={[{ required: true, message: "Please select patient!" }]}
           >
             <Select style={{ width: 120 }}>
-              <Option value="John Doe">John Doe</Option>
+              <Option value="Barack Obama">Barack Obama</Option>
             </Select>
           </Form.Item>
           <Form.Item label="Prescriptions" name="prescriptions">
