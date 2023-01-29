@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ConfigProvider, Layout, Menu, theme } from "antd";
+import { ConfigProvider, Layout, Menu, Image, theme } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 import {
   UserOutlined,
@@ -49,12 +49,10 @@ export default function Home() {
           backgroundColor: "#FFFFFF",
         }}
       >
-        <div
-          style={{
-            height: 32,
-            margin: 16,
-            background: colorBgContainer,
-          }}
+        <Image
+          src="https://cdn.discordapp.com/attachments/908611400421769246/1069285223809953892/Untitled_drawing.png"
+          preview={false}
+          style={{ marginBottom: "5%", padding: "15%" }}
         />
         <Menu
           theme="light"
