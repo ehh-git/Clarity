@@ -7,7 +7,13 @@ export default function Document() {
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#00b96b",
+            colorBgContainer: "#ffffff",
+            colorPrimaryBg: "#e7c8dd",
+            colorPrimaryHover: "#e7c8dd",
+            colorPrimaryBgHover: "#E2E4F6",
+            colorPrimaryBorder: "#E7C8DD",
+            colorPrimary: "#DBAFC1",
+            colorPrimaryActive: "#E7C8DD",
           },
         }}
       >
