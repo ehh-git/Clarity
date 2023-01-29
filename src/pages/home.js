@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ConfigProvider, Layout, Menu, Image, theme } from "antd";
+import { ConfigProvider, Layout, Menu, Image, Button, theme } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 import {
   UserOutlined,
@@ -47,6 +47,8 @@ export default function Home() {
           bottom: 0,
           background: colorBgContainer,
           backgroundColor: "#FFFFFF",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <Image
@@ -83,6 +85,23 @@ export default function Home() {
             setCurrPage(e.key);
           }}
         />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "10%",
+          }}
+        >
+          <Button
+            danger
+            onClick={() => {
+              window.location.href = "/login";
+            }}
+          >
+            Sign Out
+          </Button>
+        </div>
       </Sider>
       <Layout className="site-layout" style={{ marginLeft: 200 }}>
         {page}
