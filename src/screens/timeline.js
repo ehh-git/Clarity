@@ -11,6 +11,7 @@ export default function TimelinePage() {
   } = theme.useToken();
 
   const [timelineEvents, setTimelineEvents] = useState([]);
+  const [appointmentData, setAppointmentData] = useState(undefined);
 
   useEffect(() => {
     fetch("/api/events")
@@ -19,43 +20,6 @@ export default function TimelinePage() {
         setTimelineEvents(data);
       });
   }, []);
-
-  const appointmentData = {
-    id: "1",
-    title: "General Checkup",
-    date: "2021-01-01",
-    provider: "Dr. Smith",
-    providerId: "123",
-    notes: "This is a note",
-    prescriptions: [  
-      {
-        id: "1",
-        name: "Tylenol",
-        dosage: "1 pill",
-        frequency: "2x a day",
-      },
-      {
-        id: "2",
-        name: "Advil",
-        dosage: "1 pill",
-        frequency: "2x a day",
-      },
-      {
-        id: "1",
-        name: "Tylenol",
-        dosage: "1 pill",
-        frequency: "2x a day",
-        description: "This is a note",
-      },
-      {
-        id: "2",
-        name: "Advil",
-        dosage: "1 pill",
-        frequency: "2x a day",
-        description: "This is a note",
-      },
-    ],
-  };
 
   const timelineItems = timelineEvents.map((event) => {
     let color = "";
@@ -69,7 +33,13 @@ export default function TimelinePage() {
             <Text type="secondary">APPOINTMENT</Text>
             <h2>{event.title}</h2>
             <p>{event.date}</p>
-            <Button style={{ marginTop: "2%" }} type="primary">
+            <Button
+              style={{ marginTop: "2%" }}
+              type="primary"
+              onClick={() => {
+                setAppointmentData(event);
+              }}
+            >
               View Appointment Log
             </Button>
           </Card>
@@ -119,6 +89,7 @@ export default function TimelinePage() {
         background: colorBgContainer,
         display: "flex",
         flexDirection: "row",
+        overflowY: "auto",
       }}
     >
       <Content
@@ -150,28 +121,34 @@ export default function TimelinePage() {
           paddingTop: "3%",
         }}
       >
-        <Title>{appointmentData.title}</Title>
-        <Text type="secondary">{appointmentData.date}</Text>
-        <Text type="secondary">{appointmentData.provider}</Text>
-        <Text style={{ marginTop: "5%" }} type="secondary">
-          {appointmentData.notes}
-        </Text>
-        <Title level={2} style={{ marginTop: "5%" }}>
-          Prescriptions
-        </Title>
-        <List
-          grid={{ gutter: 16, column: 4 }}
-          dataSource={appointmentData.prescriptions}
-          renderItem={(item) => (
-            <List.Item>
-              <Card title={item.name}>
-                <p>{item.dosage}</p>
-                <p>{item.frequency}</p>
-                <p>{item.description}</p>
-              </Card>
-            </List.Item>
-          )}
-        />
+        {appointmentData ? (
+          <>
+            <Title>{appointmentData.title}</Title>
+            <Text type="secondary">{appointmentData.date}</Text>
+            <Text type="secondary">{appointmentData.provider}</Text>
+            <Text style={{ marginTop: "5%" }} type="secondary">
+              {appointmentData.notes}
+            </Text>
+            <Title level={2} style={{ marginTop: "5%" }}>
+              Prescriptions
+            </Title>
+            <List
+              grid={{ gutter: 16, column: 4 }}
+              dataSource={appointmentData.prescriptions}
+              renderItem={(item) => (
+                <List.Item>
+                  <Card title={item.name}>
+                    <p>{item.dosage}</p>
+                    <p>{item.frequency}</p>
+                    <p>{item.description}</p>
+                  </Card>
+                </List.Item>
+              )}
+            />
+          </>
+        ) : (
+          <h2 style={{ color: "black" }}>Select an appointment on the left</h2>
+        )}
       </Content>
     </Content>
   );

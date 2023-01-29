@@ -154,6 +154,12 @@ export default function Appointments() {
               <Option value="John Doe">John Doe</Option>
             </Select>
           </Form.Item>
+          <Form.Item label="Prescriptions" name="prescriptions">
+            <Select mode="multiple" style={{ width: 120 }}>
+              <Option value="Tylenol">Tylenol</Option>
+              <Option value="Advil">Advil</Option>
+            </Select>
+          </Form.Item>
         </Form>
       </Modal>
     </Content>
