@@ -26,7 +26,7 @@ export default function Login() {
         height: "100vh",
         minHeight: "100vh",
         minWidth: "100vw",
-        background: "#E7C8DD",
+        background: "#E2E4F6",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -34,8 +34,8 @@ export default function Login() {
       }}
     >
       <Image
-        width={200}
-        src="https://i.imgur.com/4ZQZQ2m.png"
+        width={500}
+        src="https://cdn.discordapp.com/attachments/908611400421769246/1069285223809953892/Untitled_drawing.png"
         preview={false}
         style={{ marginBottom: "5%" }}
       />
