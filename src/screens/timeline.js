@@ -16,7 +16,7 @@ import {
 
 const { Title, Text } = Typography;
 const { Header, Content, Footer, Sider } = Layout;
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, ExportOutlined } from "@ant-design/icons";
 
 export default function TimelinePage() {
   const {
@@ -163,6 +163,34 @@ export default function TimelinePage() {
               onClick={showModal}
             />
           </Tooltip>
+          <Tooltip title="Export Timeline PDF">
+            <Button
+              style={{ marginLeft: "1%", marginBottom: "1%" }}
+              type="primary"
+              shape="circle"
+              icon={<ExportOutlined />}
+              onClick={() => {
+                fetch("api/timelinePdf")
+                  .then((response) => response.blob())
+                  .then((blob) => {
+                    // Create blob link to download
+                    const url = window.URL.createObjectURL(new Blob([blob]));
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.setAttribute("download", `TimelineExport.pdf`);
+
+                    // Append to html link element page
+                    document.body.appendChild(link);
+
+                    // Start download
+                    link.click();
+
+                    // Clean up and remove the link
+                    link.parentNode.removeChild(link);
+                  });
+              }}
+            />
+          </Tooltip>
         </div>
         <Timeline>{timelineItems}</Timeline>
       </Content>
@@ -187,7 +215,10 @@ export default function TimelinePage() {
             <Title>{appointmentData.title}</Title>
             <Text type="secondary">{appointmentData.date}</Text>
             <Text type="secondary">{appointmentData.provider}</Text>
-            <Text style={{ marginTop: "5%", marginRight: "50%"}} type="secondary">
+            <Text
+              style={{ marginTop: "5%", marginRight: "50%" }}
+              type="secondary"
+            >
               {appointmentData.notes}
             </Text>
             <Title level={2} style={{ marginTop: "5%" }}>
@@ -199,13 +230,41 @@ export default function TimelinePage() {
               renderItem={(item) => (
                 <List.Item>
                   <Card title={item.name}>
-                  <p>{item.description}</p>
+                    <p>{item.description}</p>
                     <p>{item.dosage}</p>
                     <p>{item.frequency}</p>
                   </Card>
                 </List.Item>
               )}
             />
+            <Tooltip title="Export Appointment PDF">
+              <Button
+                style={{ marginLeft: "1%", marginBottom: "1%" }}
+                type="primary"
+                shape="circle"
+                icon={<ExportOutlined />}
+                onClick={() => {
+                  fetch("api/apptPdf/" + appointmentData._id)
+                    .then((response) => response.blob())
+                    .then((blob) => {
+                      // Create blob link to download
+                      const url = window.URL.createObjectURL(new Blob([blob]));
+                      const link = document.createElement("a");
+                      link.href = url;
+                      link.setAttribute("download", `AppointmentExport.pdf`);
+
+                      // Append to html link element page
+                      document.body.appendChild(link);
+
+                      // Start download
+                      link.click();
+
+                      // Clean up and remove the link
+                      link.parentNode.removeChild(link);
+                    });
+                }}
+              />
+            </Tooltip>
           </>
         ) : (
           <h2 style={{ color: "black" }}>Select an appointment on the left</h2>
