@@ -74,12 +74,12 @@ export default function Login() {
           <Form.Item
             name="remember"
             valuePropName="checked"
-            wrapperCol={{ offset: 8, span: 16 }}
+            wrapperCol={{ offset: 9, span: 20 }}
           >
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Form.Item wrapperCol={{ offset: 10, span: 20 }}>
             <Button type="primary" htmlType="submit" onClick={handleClick}>
               Submit
             </Button>

@@ -81,6 +81,7 @@ export default function Providers() {
         minHeight: "100vh",
         minWidth: "100vw",
         background: colorBgContainer,
+        backgroundColor: "#E2E4F6",
         paddingTop: "3%",
         paddingLeft: "3%",
       }}

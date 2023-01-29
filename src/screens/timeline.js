@@ -127,6 +127,7 @@ export default function TimelinePage() {
         minHeight: "100vh",
         minWidth: "100vw",
         background: colorBgContainer,
+        backgroundColor: "#E2E4F6",
         display: "flex",
         flexDirection: "row",
         overflowY: "auto",
@@ -140,6 +141,7 @@ export default function TimelinePage() {
           minWidth: "20vw",
           marginLeft: "3%",
           background: colorBgContainer,
+          backgroundColor: "#E2E4F6",
           paddingTop: "3%",
         }}
       >
@@ -172,8 +174,9 @@ export default function TimelinePage() {
           minWidth: "50vw",
           marginLeft: "10%",
           paddingLeft: "3%",
-          borderLeft: "1px solid #D3D3D3",
+          borderLeft: "2px solid #D3D3D3",
           background: colorBgContainer,
+          backgroundColor: "#E2E4F6",
           display: "flex",
           flexDirection: "column",
           paddingTop: "3%",

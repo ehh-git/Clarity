@@ -31,6 +31,7 @@ export default function Doctor() {
           top: 0,
           bottom: 0,
           background: colorBgContainer,
+          backgroundColor: "#86626E",
         }}
       >
         <div
@@ -38,6 +39,7 @@ export default function Doctor() {
             height: 32,
             margin: 16,
             background: colorBgContainer,
+            
           }}
         />
         <Menu

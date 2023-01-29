@@ -46,6 +46,7 @@ export default function Home() {
           top: 0,
           bottom: 0,
           background: colorBgContainer,
+          backgroundColor: "#86626E",
         }}
       >
         <div
