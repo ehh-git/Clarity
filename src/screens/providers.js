@@ -20,6 +20,7 @@ export default function Providers() {
   } = theme.useToken();
 
   const [data, setData] = useState([]);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     fetch("/api/providers")
@@ -36,6 +37,18 @@ export default function Providers() {
   };
 
   const handleOk = () => {
+    fetch("/api/addProvider", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ input }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+    setInput("");
     setIsModalOpen(false);
   };
 
@@ -99,6 +112,8 @@ export default function Providers() {
           size="large"
           placeholder="Provider Code"
           prefix={<UserOutlined />}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
       </Modal>
     </Content>
