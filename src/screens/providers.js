@@ -1,7 +1,16 @@
-import React from "react";
-import { Layout, Typography, Space, theme } from "antd";
+import React, { useState } from "react";
+import {
+  Layout,
+  Typography,
+  List,
+  Tooltip,
+  Button,
+  Modal,
+  Input,
+  theme,
+} from "antd";
 const { Content } = Layout;
-import { UserOutlined, CalendarOutlined } from "@ant-design/icons";
+import { PlusOutlined, UserOutlined } from "@ant-design/icons";
 import ProviderCard from "@/components/providerCard";
 const { Title } = Typography;
 
@@ -23,13 +32,19 @@ export default function Providers() {
     },
   ];
 
-  const cards = mockData.map((data) => (
-    <ProviderCard
-      name={data.name}
-      img={data.img}
-      description={data.description}
-    />
-  ));
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <Content
@@ -39,18 +54,56 @@ export default function Providers() {
         minHeight: "100vh",
         minWidth: "100vw",
         background: colorBgContainer,
+        paddingTop: "3%",
+        paddingLeft: "3%",
       }}
     >
-      <div
-        style={{
-          paddingLeft: "3%",
-        }}
-      >
-        <Title>My Providers</Title>
-        <Space direction="vertical" size="middle" style={{ display: "flex" }}>
-          {cards}
-        </Space>
+      <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Title>My Providers</Title>
+          <Tooltip title="Add Provider">
+            <Button
+              style={{ marginLeft: "1%", marginBottom: "1%" }}
+              type="primary"
+              shape="circle"
+              icon={<PlusOutlined />}
+              onClick={showModal}
+            />
+          </Tooltip>
+        </div>
+        <List
+          grid={{ gutter: 16, column: 4 }}
+          dataSource={mockData}
+          renderItem={(item) => (
+            <List.Item>
+              <ProviderCard
+                name={item.name}
+                img={item.img}
+                description={item.description}
+              />
+            </List.Item>
+          )}
+        />
       </div>
+      <Modal
+        title="Add Provider"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Input
+          size="large"
+          placeholder="Provider Code"
+          prefix={<UserOutlined />}
+        />
+      </Modal>
     </Content>
   );
 }

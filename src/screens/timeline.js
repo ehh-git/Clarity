@@ -122,8 +122,6 @@ export default function TimelinePage() {
     return <Timeline.Item color={color}>{data}</Timeline.Item>;
   });
 
-  console.log(timelineItems);
-
   return (
     <Content
       style={{

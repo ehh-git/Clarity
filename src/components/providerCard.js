@@ -15,8 +15,8 @@ export default function ProviderCard({ name, img, description }) {
         title={name}
         description={description}
       />
-      <Button type="primary" style={{ marginTop: "5%" }}>
-        View Past Appointments
+      <Button type="primary" danger style={{ marginTop: "5%" }}>
+        Remove
       </Button>
     </Card>
   );

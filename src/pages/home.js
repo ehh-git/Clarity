@@ -5,10 +5,12 @@ import {
   UserOutlined,
   CalendarOutlined,
   SettingOutlined,
+  MedicineBoxOutlined,
 } from "@ant-design/icons";
 import Providers from "../screens/providers";
 import Timeline from "../screens/timeline";
 import Usersettings from "../screens/usersettings";
+import MedicationsPage from "@/screens/medications";
 
 export default function Home() {
   const {
@@ -25,6 +27,9 @@ export default function Home() {
       page = <Timeline />;
       break;
     case "3":
+      page = <MedicationsPage />;
+      break;
+    case "4":
       page = <Usersettings />;
       break;
     default:
@@ -66,9 +71,14 @@ export default function Home() {
             },
             {
               key: "3",
+              icon: <MedicineBoxOutlined />,
+              label: "Medications",
+            },
+            /* {
+              key: "4",
               icon: <SettingOutlined />,
               label: "User Settings",
-            },
+            }, */
           ]}
           onClick={(e) => {
             setCurrPage(e.key);
