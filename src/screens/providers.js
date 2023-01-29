@@ -105,19 +105,21 @@ export default function Providers() {
             />
           </Tooltip>
         </div>
-        <div>
-          <Row>
-            {data.map((item) => (
-              <List.Item style={{ padding: "1%" }}>
-                <ProviderCard
-                  name={item.name}
-                  img={item.img}
-                  description={item.description}
-                />
-              </List.Item>
-            ))}
-          </Row>
-        </div>
+        <Row
+          style={{
+            marginRight: "20%",
+          }}
+        >
+          {data.map((item) => (
+            <List.Item style={{ padding: "1%" }}>
+              <ProviderCard
+                name={item.name}
+                img={item.img}
+                description={item.description}
+              />
+            </List.Item>
+          ))}
+        </Row>
       </div>
       <Modal
         title="Add Provider"
