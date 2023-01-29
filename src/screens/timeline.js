@@ -187,7 +187,7 @@ export default function TimelinePage() {
             <Title>{appointmentData.title}</Title>
             <Text type="secondary">{appointmentData.date}</Text>
             <Text type="secondary">{appointmentData.provider}</Text>
-            <Text style={{ marginTop: "5%" }} type="secondary">
+            <Text style={{ marginTop: "5%", marginRight: "50%"}} type="secondary">
               {appointmentData.notes}
             </Text>
             <Title level={2} style={{ marginTop: "5%" }}>
