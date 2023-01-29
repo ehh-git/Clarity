@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu, Image, Button, theme } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 import { PaperClipOutlined } from "@ant-design/icons";
 import Providers from "../screens/providers";
@@ -31,16 +31,13 @@ export default function Doctor() {
           top: 0,
           bottom: 0,
           background: colorBgContainer,
-          backgroundColor: "#86626E",
+          backgroundColor: "#fff",
         }}
       >
-        <div
-          style={{
-            height: 32,
-            margin: 16,
-            background: colorBgContainer,
-            
-          }}
+        <Image
+          src="https://cdn.discordapp.com/attachments/908611400421769246/1069285223809953892/Untitled_drawing.png"
+          preview={false}
+          style={{ marginBottom: "5%", padding: "15%" }}
         />
         <Menu
           theme="light"
@@ -56,6 +53,23 @@ export default function Doctor() {
             setCurrPage(e.key);
           }}
         />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "10%",
+          }}
+        >
+          <Button
+            danger
+            onClick={() => {
+              window.location.href = "/login";
+            }}
+          >
+            Sign Out
+          </Button>
+        </div>
       </Sider>
       <Layout className="site-layout" style={{ marginLeft: 200 }}>
         {page}
