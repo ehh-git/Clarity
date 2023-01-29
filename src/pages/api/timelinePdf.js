@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 
   const table = {
     title: "Events",
-    headers: ["Event", "Date", "Provider"],
+    headers: ["Event", "Title", "Date"],
     rows: events.map((event) => [
       capitalize(event.type),
       event.title,
